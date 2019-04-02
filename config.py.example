@@ -1,0 +1,21 @@
+#coding:utf-8
+
+config = {
+	"flask":{
+		"debug":False,
+		"host":"127.0.0.1",
+		"port":5001
+	},
+	"telegram":{
+		"token":"",
+		"webhookAddress":"",
+		"chatId":[
+			
+		]
+	},
+	"ssrSpeed":{
+		"token":"Test",
+		"uploadDir":"./uploads/"
+	}
+}
+
