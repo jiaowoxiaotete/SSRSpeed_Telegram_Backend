@@ -75,10 +75,14 @@ def uploadResult():
 def sendResult(filename,remark):
 	telegramConfig = config["telegram"]
 	for chatId in telegramConfig["chatId"]:
-		bot.send_message(chat_id=chatId,text=remark)
-		iid = bot.send_message(chat_id=chatId,text="Sending file...").message_id
-		bot.send_document(chat_id=chatId,document=open(filename,"rb"))
-		bot.delete_message(chat_id=chatId,message_id=iid)
+		try:
+			bot.send_message(chat_id=chatId,text=remark)
+			iid = bot.send_message(chat_id=chatId,text="Sending file...").message_id
+			bot.send_document(chat_id=chatId,document=open(filename,"rb"))
+			bot.delete_message(chat_id=chatId,message_id=iid)
+		except:
+			logger.exception("")
+			continue
 
 def processUpdate(update):
 	if (update.message.text == "/getChatId"):
